@@ -9,6 +9,7 @@ general:
 search:
   safe_search: 2
   autocomplete: 'duckduckgo'
+  favicon_resolver: "allesedv"
 
 server:
   # Is overwritten by ${SEARXNG_SECRET}
@@ -72,3 +73,6 @@ engines:
 #       - https://invidious.tiekoetter.com
 #       - https://invidio.xamh.de
 #       - https://inv.riverside.rocks
+
+    - name: qwant
+      disabled: true
