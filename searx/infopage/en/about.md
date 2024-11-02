@@ -1,3 +1,29 @@
+# About search.kris.sh
+This is a generic SearXNG instance, that has been mostly kept vanilla and is hosted on a server running Void Linux.
+
+The only modification has been to this about page.
+
+Maintenance is usually done on Sundays.
+
+# Q/A:
+
+## Do you collect logs?
+
+- None at all. The server this is hosted on doesn't even have a swapfile to try to make sure nothing is written to disk.
+
+## How can I trust that you don't collect logs?
+
+- You can't. I could very easily log IP addresses and/or modify the source of SearXNG to collect more specific information, as with pretty much all other instances, so it becomes a "take my word for it" type of situation. See: VPNs
+
+## Are there any rules with using this instance?
+
+- Do not do anything that can be considered illegal in Germany.
+- Use common sense.
+
+## Miscellaneous Information
+
+- Can be found on my [website](https://kris.sh/).
+
 # About SearXNG
 
 SearXNG is a [metasearch engine], aggregating the results of other
