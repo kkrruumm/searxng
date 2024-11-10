@@ -22,7 +22,7 @@ Maintenance is usually done on Saturdays.
 
 ## Miscellaneous Information
 
-- Can be found on my [website](https://kris.sh/).
+- Can be found on my [website](https://kris.sh/services/).
 
 # About SearXNG
 
