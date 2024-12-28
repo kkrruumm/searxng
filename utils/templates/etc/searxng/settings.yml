@@ -25,7 +25,10 @@ redis:
   url: unix:///usr/local/searxng-redis/run/redis.sock?db=0
 
 ui:
+  default_locale: "en"
   static_use_hash: true
+  theme_args:
+    simple_style: black
 
 # preferences:
 #   lock:
