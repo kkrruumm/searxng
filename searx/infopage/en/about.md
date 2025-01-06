@@ -1,15 +1,15 @@
 # About search.kris.sh
 This is a generic SearXNG instance, that has been mostly kept vanilla and is hosted on a server running Void Linux.
 
-The only addition has been to this about page, and there are a few settings tweaks, such as enabling favicons and disabling the qwant engine by default (captchas).
+The only addition has been to this about page, and there are a few settings tweaks, such as enabling favicons, disabling the qwant engine by default (captchas), defaulting to dark mode, and defaulting to the English locale.
 
-Maintenance is usually done on Saturdays.
+While maintenance is usually done on Saturdays, this instance should not be expected to kept bleeding edge in an attempt to remain stable.
 
 # Q/A:
 
 ## Do you collect logs?
 
-- None at all. The server this is hosted on doesn't even have a swapfile to try to make sure nothing is written to disk.
+- No. 
 
 ## How can I trust that you don't collect logs?
 
