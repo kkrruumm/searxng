@@ -20,6 +20,7 @@ from searx.engines import (
 )
 from searx.network import get as http_get, post as http_post
 from searx.exceptions import SearxEngineResponseException
+from searx.utils import extr
 
 
 def update_kwargs(**kwargs):
@@ -148,6 +149,21 @@ def mwmbl(query, _lang):
     return [result for result in results if not result.startswith("go: ") and not result.startswith("search: ")]
 
 
+def qihu360search(query, _lang):
+    # 360Search search autocompleter
+    url = f"https://sug.so.360.cn/suggest?{urlencode({'format': 'json', 'word': query})}"
+    response = get(url)
+
+    results = []
+
+    if response.ok:
+        data = response.json()
+        if 'result' in data:
+            for item in data['result']:
+                results.append(item['word'])
+    return results
+
+
 def seznam(query, _lang):
     # seznam search autocompleter
     url = 'https://suggest.seznam.cz/fulltext/cs?{query}'
@@ -171,6 +187,23 @@ def seznam(query, _lang):
     ]
 
 
+def sogou(query, _lang):
+    # Sogou search autocompleter
+    base_url = "https://sor.html5.qq.com/api/getsug?"
+    response = get(base_url + urlencode({'m': 'searxng', 'key': query}))
+
+    if response.ok:
+        raw_json = extr(response.text, "[", "]", default="")
+
+        try:
+            data = json.loads(f"[{raw_json}]]")
+            return data[1]
+        except json.JSONDecodeError:
+            return []
+
+    return []
+
+
 def stract(query, _lang):
     # stract autocompleter (beta)
     url = f"https://stract.com/beta/api/autosuggest?q={quote_plus(query)}"
@@ -181,15 +214,6 @@ def stract(query, _lang):
         return []
 
     return [html.unescape(suggestion['raw']) for suggestion in resp.json()]
-
-
-def startpage(query, sxng_locale):
-    """Autocomplete from Startpage. Supports Startpage's languages"""
-    lui = engines['startpage'].traits.get_language(sxng_locale, 'english')
-    url = 'https://startpage.com/suggestions?{query}'
-    resp = get(url.format(query=urlencode({'q': query, 'segment': 'startpage.udog', 'lui': lui})))
-    data = resp.json()
-    return [e['text'] for e in data.get('suggestions', []) if 'text' in e]
 
 
 def swisscows(query, _lang):
@@ -255,6 +279,7 @@ def yandex(query, _lang):
 
 
 backends = {
+    '360search': qihu360search,
     'baidu': baidu,
     'brave': brave,
     'dbpedia': dbpedia,
@@ -263,7 +288,7 @@ backends = {
     'mwmbl': mwmbl,
     'qwant': qwant,
     'seznam': seznam,
-    'startpage': startpage,
+    'sogou': sogou,
     'stract': stract,
     'swisscows': swisscows,
     'wikipedia': wikipedia,
