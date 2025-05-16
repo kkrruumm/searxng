@@ -11,6 +11,7 @@ search:
   autocomplete: 'duckduckgo'
   formats:
     - html
+  favicon_resolver: "allesedv"
 
 server:
   # Is overwritten by ${SEARXNG_SECRET}
@@ -27,13 +28,17 @@ redis:
 
 ui:
   static_use_hash: true
+  theme_args:
+    simple_style: black
 
 # preferences:
 #   lock:
 #     - autocomplete
 #     - method
 
-# engines:
+engines:
+  - name: qwant
+    disabled: true
 #
 #   - name: fdroid
 #     disabled: false
