@@ -1,6 +1,17 @@
 # SearXNG settings
 
-use_default_settings: true
+# most of the engines being removed here have been removed
+# due to highly NSFW results as a result of normal/typical
+# search queries, making them practically russian roulette
+use_default_settings:
+  engines:
+    remove:
+      - deviantart
+      - flickr
+      - "qwant images"
+      - "startpage images"
+      - startpage
+      - artic
 
 general:
   debug: false
@@ -37,9 +48,15 @@ ui:
 #     - method
 
 engines:
+    # for whatever reason, removing qwant like with
+    # startpage/startpage images/etc above
+    # will result in searxng failing to start
+    #
+    # qwant is being disabled due to captchas/timeouts,
+    # not due to degeneracy like above
   - name: qwant
     disabled: true
-#
+
 #   - name: fdroid
 #     disabled: false
 #
