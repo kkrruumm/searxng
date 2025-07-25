@@ -1,6 +1,14 @@
 # SearXNG settings
 
-use_default_settings: true
+use_default_settings:
+  engines:
+    remove:
+      - deviantart
+      - flickr
+      - "qwant images"
+      - "startpage images"
+      - startpage
+      - artic
 
 general:
   debug: false
@@ -11,6 +19,7 @@ search:
   autocomplete: 'duckduckgo'
   formats:
     - html
+  favicon_resolver: "allesedv"
 
 server:
   # Is overwritten by ${SEARXNG_SECRET}
@@ -25,12 +34,18 @@ valkey:
   # URL to connect valkey database. Is overwritten by ${SEARXNG_VALKEY_URL}.
   url: valkey://localhost:6379/0
 
+ui:
+  theme_args:
+    simple_style: black
+
 # preferences:
 #   lock:
 #     - autocomplete
 #     - method
 
-# engines:
+engines:
+  - name: qwant
+    disabled: true
 #
 #   - name: fdroid
 #     disabled: false
